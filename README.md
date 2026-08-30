@@ -1,75 +1,36 @@
-# ResolveAI — Frictionless Dispute & Chargeback Resolution Platform
+# ResolveAI — AI-Powered Dispute & Chargeback Resolution Platform
 > **American Express CodeStreet Hackathon Project**
-> *Reducing chargeback processing timelines from one full month down to just a few minutes.*
+> *Automating chargeback dispute resolution by extracting evidence and evaluating claims with agentic LLM workflows.*
 
 ---
 
 ## 📌 Project Overview
-**ResolveAI** is an AI-powered evidence intelligence platform designed to automate credit card chargeback and dispute resolution. It automatically collects transaction evidence from both Card Members and Merchants, parses uploaded documents (receipts, carrier tracking, refund policies) using OCR, matches policy rules via Retrieval-Augmented Generation (RAG), and executes a multi-agent LLM pipeline to generate fair confidence scores and transparent decision summaries.
+**ResolveAI** is an intelligent dispute resolution platform designed to accelerate credit card chargeback workflows from weeks down to minutes. It ingests transaction evidence from both Card Members and Merchants, parses uploaded receipts and carrier documents using OCR, retrieves relevant chargeback policy clauses via RAG, and executes a multi-agent LLM pipeline to produce transparent confidence scoring and decision rationales.
 
 ---
 
-## 🎯 Resume Justification & Feature Mapping
+## 🚀 Key Features
 
-This codebase is structured to directly justify both **SDE** and **Gen AI / AI-ML** resume bullet points:
-
-### 1️⃣ SDE Resume Points Alignment
-- **React Frontend**: Modern single-page web app with Card Member Submission, Merchant Portal, and Reviewer Dashboard (`frontend/src/App.jsx`).
-- **Python (FastAPI) & REST APIs**: Modular backend handling endpoints for dispute lifecycle, evidence uploads, and evaluation (`backend/app/main.py`).
-- **PostgreSQL / SQLAlchemy Database**: Relational schema tracking Disputes, Evidence items, Audit logs, and User roles (`backend/app/models.py`).
-- **OCR & LLM API Integration**: Automated document text extraction combined with structured API responses (`backend/app/ocr_service.py`, `backend/app/agent_workflow.py`).
-
-### 2️⃣ Gen AI / AI-ML Resume Points Alignment
-- **Agentic LLM Pipeline**: 4-stage agentic workflow (`Classification` ➔ `Evidence Analysis` ➔ `Policy Reasoning` ➔ `Decision & Explanation`) executing structured prompt chains (`backend/app/agent_workflow.py`).
-- **RAG & Vector Search**: Embedded AMEX Chargeback policy guidelines with vector similarity matching for policy lookup (`backend/app/rag_service.py`).
-- **OCR Ingestion**: Automated text extraction from PDF/image uploads to parse dates, amounts, and tracking numbers (`backend/app/ocr_service.py`).
-- **Evidence Confidence Scoring & Transparent Reasoning**: Generates percentage-based win probabilities (Card Member vs Merchant) alongside human-readable decision justifications (`backend/app/agent_workflow.py`).
+- **Multi-Party Portal**: Distinct interfaces for Card Member dispute filing, Merchant rebuttal submissions, and Reviewer case management.
+- **OCR Document Parsing**: Automated text and data extraction from receipts, order confirmations, and tracking documents.
+- **Policy RAG Retrieval**: Chargeback rulebook embeddings matched against case facts for grounded decision-making.
+- **Agentic Decision Pipeline**: 4-stage reasoning chain (Classification ➔ Evidence Analysis ➔ Policy Grounding ➔ Decision & Rationale).
+- **Explainable Scoring**: Win/loss probability breakdowns with clear human-readable justifications and audit trails.
 
 ---
 
-## 🏗️ Tech Stack
+## 🛠️ Tech Stack
 
-- **Frontend**: React (Vite), Tailwind CSS
+- **Frontend**: React 18, Vite, Tailwind CSS, Lucide Icons
 - **Backend**: Python 3.10+, FastAPI, Uvicorn, Pydantic
-- **Database**: SQLite / PostgreSQL (SQLAlchemy ORM)
-- **AI & NLP**: LangChain / OpenAI API (with built-in offline fallback engine), Vector Embeddings (FAISS / In-Memory similarity), OCR Parser
+- **Database**: SQLite / PostgreSQL with SQLAlchemy ORM
+- **AI & NLP**: LangChain, OpenAI / Gemini APIs, Vector Embeddings (FAISS / Cosine Similarity), Tesseract OCR
 
 ---
 
-## 🚀 Quick Start Guide
+## 📦 Repository Structure
 
-### Prerequisites
-- Python 3.10+
-- Node.js 18+
-
-### 1. Backend Setup
-
-```bash
-cd backend
-python -m venv venv
-# On Windows:
-venv\Scripts\activate
-
-pip install -r requirements.txt
-python -m app.seed_data  # Seeds database with sample disputes
-uvicorn app.main:app --reload --port 8000
-```
-Backend API will be running at `http://localhost:8000`. Swagger docs at `http://localhost:8000/docs`.
-
-### 2. Frontend Setup
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-Frontend will be running at `http://localhost:5173`.
-
----
-
-## 📁 Repository Structure
-
-```text
+\\	ext
 resolve-ai/
 ├── README.md
 ├── backend/
@@ -77,18 +38,51 @@ resolve-ai/
 │   │   ├── main.py              # FastAPI REST endpoints
 │   │   ├── database.py          # Database session & engine
 │   │   ├── models.py            # SQLAlchemy database models
-│   │   ├── schemas.py           # Pydantic data validation schemas
+│   │   ├── schemas.py           # Pydantic validation schemas
 │   │   ├── ocr_service.py       # Document OCR & text parsing
 │   │   ├── rag_service.py       # Policy vector search & RAG engine
-│   │   ├── agent_workflow.py    # Agentic LLM reasoning pipeline
-│   │   └── seed_data.py         # Initial mock dispute data seeder
+│   │   ├── agent_workflow.py    # Multi-stage LLM reasoning pipeline
+│   │   └── seed_data.py         # Mock dispute seed data
 │   └── requirements.txt
 └── frontend/
     ├── package.json
     ├── vite.config.js
     ├── index.html
     └── src/
-        ├── App.jsx              # Main React SPA
+        ├── App.jsx              # Main React Application
         ├── main.jsx
         └── index.css
-```
+\
+---
+
+## ⚡ Quick Start Guide
+
+### Prerequisites
+- Python 3.10+
+- Node.js 18+
+
+### 1. Backend Setup
+\\ash
+cd backend
+python -m venv venv
+# On Windows:
+venv\Scriptsctivate
+# On Linux/macOS:
+# source venv/bin/activate
+
+pip install -r requirements.txt
+python -m app.seed_data
+uvicorn app.main:app --reload --port 8000
+\- API Docs (Swagger UI): http://localhost:8000/docs
+
+### 2. Frontend Setup
+\\ash
+cd frontend
+npm install
+npm run dev
+\- Frontend Application: http://localhost:5173
+
+---
+
+## 📄 License
+MIT © Charan-git-0-0
